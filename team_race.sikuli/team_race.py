@@ -78,5 +78,5 @@ sleep(3)
 
 succeeded = True
 
-while suceeded:
+while succeeded:
     suceeded = team_race()
