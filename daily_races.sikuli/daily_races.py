@@ -40,4 +40,4 @@ click("1615668936391.png")
 succeeded = True
 
 while succeeded:
-    suceeded = daily_race()
+    succeeded = daily_race()

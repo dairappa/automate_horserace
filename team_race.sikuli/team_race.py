@@ -31,6 +31,7 @@ def team_race():
 
 
 
+
     # TODO:　アイテム拾ったとき対応
 
     hasItem = has(Pattern("1615526489319.png").similar(0.50), 5)
