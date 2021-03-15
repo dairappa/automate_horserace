@@ -22,6 +22,12 @@ def team_race():
 
         sleep(3)
 
+    # ハイスコア、報酬がある場合は次へボタンのみが一度出る
+
+    if not has("1615497071387.png", 5):
+        click("1615497350224.png")
+        
+
 
     # TODO: ハイスコア更新対応
     isHighscore = has(Pattern("1615527252775.png").similar(0.50), 5)
@@ -38,6 +44,9 @@ def team_race():
 
     if hasItem:
         click("1615526540633.png")
+
+
+    
 
     # TODO: 限定セール対応
 
@@ -79,4 +88,4 @@ click(Pattern("1615496097944.png").targetOffset(-12,-136))
 succeeded = True
 
 while succeeded:
-    suceeded = team_race()
+    succeeded = team_race()
