@@ -23,7 +23,7 @@ def team_race():
         sleep(3)
 
     # TODO: ハイスコア更新対応
-    isHighscore = has(Pattern("1615527252775.png").similar(0.50), 5)
+    isHighscore = has(Pattern("1615527252775.png").similar(0.50), 10)
 
     if isHighscore:
         click(Pattern("1615527252775.png").similar(0.50))
