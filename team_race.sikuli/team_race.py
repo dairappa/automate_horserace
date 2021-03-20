@@ -70,6 +70,11 @@ def team_race():
 
     if noRP:
         click(Pattern("1615667573486.png").targetOffset(-107,172))
+        click("1616275652534.png")
+        click("1616275668460.png")
+        wait("1616275725222.png", 5)
+        click()
+        
         return False
 
     return True

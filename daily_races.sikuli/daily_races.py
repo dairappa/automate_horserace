@@ -18,6 +18,9 @@ def daily_race():
 
     if noTicket:
         click(Pattern("1615669525424.png").targetOffset(-16,-321))
+        click("1616276117034.png")
+        wait("1616276140326.png", 5)
+        click()
         return False
 
     return True
