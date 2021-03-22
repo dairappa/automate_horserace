@@ -24,8 +24,7 @@ def loop():
         return True
     
     if not reg.has(Pattern("1616053302005.png").similar(0.90)) and reg.has(Pattern("1615978315697.png").similar(0.85)) and not reg.has(Pattern("1616368003968.png").similar(0.95)):
-        reg.click()
-
+        reg.click(Pattern("1615978315697.png").similar(0.85))
         if reg.has("1615978551852.png", 5):
             reg.click("1615978573903.png")
             wait(2)
@@ -119,5 +118,5 @@ succeeded = True
 
 
 while succeeded:
-    wait(5)
     succeeded = loop()
+    wait(5)
