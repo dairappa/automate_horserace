@@ -92,3 +92,5 @@ succeeded = True
 
 while succeeded:
     succeeded = team_race()
+
+wait(1)

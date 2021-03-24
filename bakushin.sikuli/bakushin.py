@@ -4,11 +4,24 @@ def waitClick(image, waitSecond = 10):
     reg.wait(image, waitSecond)
     reg.click()
 
+setEscape = False
+
 def runRace():
+    global setEscape
+    
     reg.click("1616365555818.png")
     wait(2)
     
     reg.click("1616365555818.png")
+
+    if not setEscape:
+        waitClick("1616490307479.png")
+        waitClick(Pattern("1616490330308.png").similar(0.85))
+        reg.click("1616490367973.png")
+        setEscape = True
+     
+
+    wait(1)     
     waitClick("1616365717674.png")
     wait(3)
     reg.click(Pattern("1615955389096.png").targetOffset(268,627))
@@ -96,10 +109,15 @@ def loop():
             # ポップアップが出なかった場合、誤クリックなので流す
             wait(1)
     
-    if reg.has(Pattern("1615929011233.png").similar(0.90)) and reg.has("1615928174362.png"):
-        reg.click("1615928174362.png")
-        waitClick("1615928199593.png")
-        return True
+    if reg.has(Pattern("1615929011233.png").similar(0.90)):
+        if reg.has("1615928174362.png") :
+            reg.click("1615928174362.png")
+            waitClick("1615928199593.png")
+            return True
+        if reg.has("1616407518547.png"):
+            reg.click("1616407518547.png")
+            waitClick("1615928199593.png")
+            return True
 
 
 
@@ -110,6 +128,11 @@ def loop():
         reg.click(Pattern("1615928917678.png").targetOffset(14,-171))
         return True
 
+    if reg.has("1616475107941.png"):
+        reg.click()
+        return True
+    
+
     # 何にもヒットしなかったのでもう一度ループ
     return True
 
@@ -119,4 +142,4 @@ succeeded = True
 
 while succeeded:
     succeeded = loop()
-    wait(5)
+    wait(10)
