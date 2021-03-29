@@ -1,6 +1,6 @@
 reg = Region(0,0,601,1111)
 
-def waitClick(image, waitSecond = 10):
+def waitClick(image, waitSecond = 15):
     reg.wait(image, waitSecond)
     reg.click()
 
@@ -20,9 +20,13 @@ def runRace():
         reg.click("1616490367973.png")
         setEscape = True
      
-
-    wait(1)     
     waitClick("1616365717674.png")
+    wait(1)
+
+    while reg.has("1616365717674.png"):    
+        reg.click()
+        wait(1)
+    
     wait(3)
     reg.click(Pattern("1615955389096.png").targetOffset(268,627))
     
@@ -94,6 +98,16 @@ def loop():
        
        return True
 
+    if reg.has("1616646253345.png"):
+       reg.click()
+       runRace()
+       waitClick("1615956221725.png")
+       wait(2)
+       waitClick("1615956221725.png")
+       return True
+        
+        
+
     if reg.has("1615928744521.png") and reg.has("1616367046236.png"):
         reg.click("1616367046236.png")
         
@@ -142,4 +156,4 @@ succeeded = True
 
 while succeeded:
     succeeded = loop()
-    wait(10)
+    wait(12)
