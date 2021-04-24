@@ -1,14 +1,23 @@
+# -*- coding: utf-8 -*-
+from sikuli import *
+
+reg = Region(0,0,601,1111)
+
+def waitClick(image, waitSecond = 15):
+    reg.wait(image, waitSecond)
+    reg.click()
+
+
 def team_race():
-    sleep(3)
-    click(Pattern("1615497174754.png").targetOffset(206,-164))
-    
-    sleep(2)
-    
-    click(Pattern("1615497174754.png").targetOffset(236,3))
-
     sleep(2)
 
-    click("1615496266402.png")
+    waitClick(Pattern("1618967182105.png").targetOffset(14,111))
+  
+    sleep(2)
+    waitClick(Pattern("1618967254003.png").similar(0.60).targetOffset(17,599))
+
+
+    waitClick("1615496266402.png")
 
     wait("1615497461594.png",10)
 
@@ -69,28 +78,26 @@ def team_race():
     noRP = has("1615667482724.png", 5)
 
     if noRP:
-        click(Pattern("1615667573486.png").targetOffset(-107,172))
-        click("1616275652534.png")
-        click("1616275668460.png")
-        wait("1616275725222.png", 5)
-        click()
+        waitClick(Pattern("1615667573486.png").targetOffset(-107,172))
+        waitClick("1616275652534.png")
+        waitClick("1616275668460.png")
+        waitClick("1616275725222.png")
         
         return False
 
     return True
 
-# main    
+# main
+def run():
+    waitClick("1615496030640.png")
+    waitClick("1615496064507.png")
+    waitClick(Pattern("1615496097944.png").targetOffset(-12,-136))
 
-click("1615496030640.png")
+    succeeded = True
 
-click("1615496064507.png")
-click(Pattern("1615496097944.png").targetOffset(-12,-136))
+    while succeeded:
+        succeeded = team_race()
 
+    wait(3)
 
-
-succeeded = True
-
-while succeeded:
-    succeeded = team_race()
-
-wait(1)
+run()

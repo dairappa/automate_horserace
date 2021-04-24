@@ -1,8 +1,5 @@
-reg = Region(0,0,601,1111)
-
-def waitClick(image, waitSecond = 15):
-    reg.wait(image, waitSecond)
-    reg.click()
+sys.path.append("util")
+import util
 
 setEscape = False
 
@@ -21,9 +18,9 @@ def runRace():
         setEscape = True
      
     waitClick("1616365717674.png")
-    wait(1)
 
-    while reg.has("1616365717674.png"):    
+
+    while reg.has("1616365717674.png", 3):    
         reg.click()
         wait(1)
     
@@ -36,7 +33,7 @@ def runRace():
 
 
 def loop():
-    if reg.has(Pattern("1616388322750.png").similar(0.90)):
+    if reg.has(Pattern("1617103975184.png").similar(0.90)):
         reg.click()
         return True
     
