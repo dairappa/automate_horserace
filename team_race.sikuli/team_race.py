@@ -5,13 +5,14 @@ reg = Region(0,0,601,1111)
 
 def waitClick(image, waitSecond = 15):
     reg.wait(image, waitSecond)
+    wait(1)
     reg.click()
 
 
 def team_race():
     sleep(2)
 
-    waitClick(Pattern("1618967182105.png").targetOffset(14,111))
+    waitClick(Pattern("1618967182105.png").targetOffset(8,527))
   
     sleep(2)
     waitClick(Pattern("1618967254003.png").similar(0.60).targetOffset(17,599))
@@ -19,67 +20,27 @@ def team_race():
 
     waitClick("1615496266402.png")
 
-    wait("1615497461594.png",10)
+    reg.wait("1615497461594.png",20)
 
     for i in range(5):
 
-        click("1615496782980.png")
+        waitClick("1615496782980.png")
 
-        sleep(5)
+        sleep(1)
 
-        click(Pattern("1615496946031.png").targetOffset(394,396))
+        while not (reg.has("1615496782980.png") or reg.has("1619469921064.png")):
 
-        sleep(3)
-
-    # TODO: ハイスコア更新対応
-    isHighscore = has(Pattern("1615527252775.png").similar(0.50), 10)
-
-    if isHighscore:
-        click(Pattern("1615527252775.png").similar(0.50))
-   
-
-    # ハイスコア、報酬がある場合は次へボタンのみが一度出る
-
-    if not has("1615497071387.png", 5):
-        click("1615497350224.png")
-        
+            reg.click(Pattern("1615496946031.png").targetOffset(394,396))
+            sleep(1)
 
 
-    # TODO:　アイテム拾ったとき対応
-
-    hasItem = has(Pattern("1615526489319.png").similar(0.50), 5)
-
-    if hasItem:
-        click("1615526540633.png")
+    while not (reg.has(Pattern("1618967182105.png").targetOffset(14,111)) or reg.has("1615667482724.png")):
+        reg.click(Pattern("1615496946031.png").targetOffset(190,999))
+        sleep(1)
 
 
-    
-
-    # TODO: 限定セール対応
-
-    limetedSale = has("1615497837455.png", 10)
-
-    if limetedSale:
-        click(Pattern("1615497837455.png").targetOffset(-18,-434), 10)
-    
-
-
-    # TODO: ストーリー開放
-    newStory = has("1615527447356.png", 5)
-    if newStory:
-        click("1615527483994.png")
-
-
-    wait("1615497350224.png", 10)
-
-
-    click("1615497071387.png")
-
-    noRP = has("1615667482724.png", 5)
-
-    if noRP:
+    if reg.has("1615667482724.png"):
         waitClick(Pattern("1615667573486.png").targetOffset(-107,172))
-        waitClick("1616275652534.png")
         waitClick("1616275668460.png")
         waitClick("1616275725222.png")
         
@@ -87,10 +48,11 @@ def team_race():
 
     return True
 
+
 # main
 def run():
     waitClick("1615496030640.png")
-    waitClick("1615496064507.png")
+    waitClick("1624254096665.png")
     waitClick(Pattern("1615496097944.png").targetOffset(-12,-136))
 
     succeeded = True

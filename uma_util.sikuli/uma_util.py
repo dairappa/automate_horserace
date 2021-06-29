@@ -7,3 +7,5 @@ def waitClick(image, waitSecond = 15):
     reg.wait(image, waitSecond)
     reg.click()
 
+
+
