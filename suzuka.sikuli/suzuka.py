@@ -1,3 +1,4 @@
+import sys
 sys.path.append("training")
 import training
 
@@ -44,6 +45,29 @@ def runRace():
 
 
 
+notWinLabel = "notWinLabel.png"
+classRegion = Region(6,197,152,42)
+commandRegion = Region(14,807,570,224)
+raceIcon = Pattern("raceIcon.png").similar(0.95)
+def attendRace():
+    global speedCounter
+
+    if speedCounter <= 0:
+        return True
+
+    if classRegion.has(notWinLabel):
+        return True
+
+    return False
+
+
+def raceAvailable():
+    if commandRegion.has(raceIcon):
+        return True
+        
+    return False
+
+
 def loop():
     switchApp("umamusume")
     global speedCounter
@@ -56,37 +80,36 @@ def loop():
         return True
 
     # not in main menu -> skip
-    if not reg.has("1626396314190.png"):
+    if not reg.has("1626348422937.png"):
         return True
 
-
-    if reg.has("1626393239326.png"):
-        reg.click()
-        if reg.has("1616366183098.png", 2):
-            waitClick("1615928199593.png")
-            return True
-        else:
-            # ポップアップが出なかった場合、誤クリックなので流す
-            wait(1)
-            
     if (reg.has("1615928744521.png") or reg.has(Pattern("1626317018337.png").similar(0.80))) and reg.has("1616367046236.png"):
         reg.click("1616367046236.png")
         
         waitClick("1615928199593.png")
         return True
         
+    if reg.has(Pattern("1616366143315.png").similar(0.75)):
+        reg.click()
+        if reg.has("1616366183098.png", 5):
+            waitClick("1615928199593.png")
+            return True
+        else:
+            # ポップアップが出なかった場合、誤クリックなので流す
+            wait(1)
+
     if speedCounter > 0 and (reg.has(Pattern("1621488859271.png").similar(0.84)) or reg.has(Pattern("1621636995121.png").similar(0.80))):
         speedCounter = 0
 
-    if not speedCounter > 0 and not reg.has(Pattern("1616053302005.png").similar(0.90)) and reg.has(Pattern("1615978315697.png").similar(0.85)) and not reg.has(Pattern("1616368003968.png").similar(0.95)):
-        reg.click(Pattern("1615978315697.png").similar(0.85))
+    if attendRace() and raceAvailable():
+        commandRegion.click(raceIcon)
         if reg.has("1615978551852.png", 5):
             reg.click("1615978573903.png")
             wait(2)
             # returnせずに次の判定にうつる
         else:
             wait(2)
-            if reg.has(Pattern("1616386784155.png").similar(0.95)): 
+            if reg.has(): 
                 reg.click()
                 runRace()
                 return True
@@ -99,7 +122,7 @@ def loop():
             elif reg.has(Pattern("1616365555818.png").targetOffset(157,-169)):
                 reg.click(Pattern("1616365555818.png").targetOffset(157,-169))
                 wait(2)
-                if reg.has(Pattern("1616386784155.png").similar(0.90)): 
+                if reg.has(recommendedLabel): 
                     reg.click()
                     runRace()
                     return True
@@ -158,12 +181,12 @@ def loop():
 
 
 
-    if reg.has("1615927881535.png"):
+    if reg.has("1626350195685.png"):
     
 
-        reg.click("1615927881535.png")
-        #reg.click(Pattern("1615928917678.png").targetOffset(14,-171))
+        reg.click("1626350195685.png")
 
+        reg.wait("1626318791352.png")
 
         training.run()
 

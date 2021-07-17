@@ -12,7 +12,7 @@ def waitClick(image, waitSecond = 15):
 def team_race():
     sleep(2)
 
-    waitClick(Pattern("1618967182105.png").targetOffset(8,527))
+    waitClick(Pattern("1618967182105.png").targetOffset(-12,328))
   
     sleep(2)
     waitClick(Pattern("1618967254003.png").similar(0.60).targetOffset(17,599))
@@ -51,6 +51,7 @@ def team_race():
 
 # main
 def run():
+    switchApp("umamusume")
     waitClick("1615496030640.png")
     waitClick("1624254096665.png")
     waitClick(Pattern("1615496097944.png").targetOffset(-12,-136))

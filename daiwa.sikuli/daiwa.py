@@ -56,25 +56,24 @@ def loop():
         return True
 
     # not in main menu -> skip
-    if not reg.has("1626396314190.png"):
+    if not reg.has("1621483478211.png"):
         return True
 
-
-    if reg.has("1626393239326.png"):
-        reg.click()
-        if reg.has("1616366183098.png", 2):
-            waitClick("1615928199593.png")
-            return True
-        else:
-            # ポップアップが出なかった場合、誤クリックなので流す
-            wait(1)
-            
-    if (reg.has("1615928744521.png") or reg.has(Pattern("1626317018337.png").similar(0.80))) and reg.has("1616367046236.png"):
+    if (reg.has("1615928744521.png") or reg.has("1626317018337.png")) and reg.has("1616367046236.png"):
         reg.click("1616367046236.png")
         
         waitClick("1615928199593.png")
         return True
         
+    if reg.has(Pattern("1616366143315.png").similar(0.75)):
+        reg.click()
+        if reg.has("1616366183098.png", 5):
+            waitClick("1615928199593.png")
+            return True
+        else:
+            # ポップアップが出なかった場合、誤クリックなので流す
+            wait(1)
+
     if speedCounter > 0 and (reg.has(Pattern("1621488859271.png").similar(0.84)) or reg.has(Pattern("1621636995121.png").similar(0.80))):
         speedCounter = 0
 
@@ -164,6 +163,7 @@ def loop():
         reg.click("1615927881535.png")
         #reg.click(Pattern("1615928917678.png").targetOffset(14,-171))
 
+        reg.wait("1626318791352.png")
 
         training.run()
 
@@ -184,4 +184,4 @@ succeeded = True
 
 while succeeded:
     succeeded = loop()
-    wait(2)
+    wait(5)

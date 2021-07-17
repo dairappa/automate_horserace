@@ -1,0 +1,1 @@
+crane_button = Pattern("crane_button.png").targetOffset(-136,834)
