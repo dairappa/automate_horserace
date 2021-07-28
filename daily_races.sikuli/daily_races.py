@@ -46,9 +46,9 @@ def run():
 
     waitClick("1615496030640.png")
 
-    waitClick("1617741965676.png")
-    waitClick("1615668423272.png")
-    waitClick("1615668449733.png")
+    waitClick(Pattern("1617741965676.png").similar(0.65))
+    waitClick("1626642950970.png")
+    waitClick("1626642965135.png")
 
     noTicket = has("1615669525424.png", 5)
 

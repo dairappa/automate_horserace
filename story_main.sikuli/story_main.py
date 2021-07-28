@@ -12,8 +12,6 @@ def waitClick(image, waitSecond = 15):
     reg.click()
 
 
-speedCounter = 24
-
 condVeryGood = Pattern("condVeryGood.png").similar(0.80)
 
 classRegion = Region(8,193,149,49)
@@ -22,12 +20,12 @@ classDeviewLabel = "classDeviewLabel.png"
 raceLabel = "raceLabel.png"
 raceKeyLabel = "raceKeyLabel.png"
 
-#mainMenuHeader = "mainMenuHeader.png"
-raceDayLabel = Pattern("raceDayLabel.png").targetOffset(356,776)
+
+raceDayLabel = Pattern("raceDayLabel.png").similar(0.90)
 
 mainMenuHeader = "mainMenuHeader.png"
 
-
+gageHalf = Pattern("gageHalf.png").similar(0.80)
 
 restLabel = "restLabel.png"
 okLabel = "okLabel.png"
@@ -37,18 +35,24 @@ trainingLabel = "trainingLabel.png"
 
 notYetLabel = Pattern("notYetLabel.png").similar(0.85)
 objectiveRegion = Region(122,85,473,63)
+windowTitle = "windowTitle.png"
 
 
 def loop():
     switchApp("umamusume") 
-    global speedCounter
 
+    if not reg.has(windowTitle):
+        return False
     
-    if reg.has(Pattern("1623306979891.png").similar(0.95)):
+    if reg.has(Pattern("1623306979891.png").similar(0.95).targetOffset(-226,0)):
         reg.click()
         return True
 
     if reg.has("1616475107941.png"):
+        reg.click()
+        return True
+
+    if reg.has(nextLabel):
         reg.click()
         return True
 
@@ -69,36 +73,39 @@ def loop():
             return True
         else:
             # ポップアップが出なかった場合、誤クリックなので流す
-            wait(1)
+            sleep(1)
 
-    if speedCounter > 0 and (reg.has(Pattern("1621488859271.png").similar(0.84)) or reg.has(Pattern("1621636995121.png").similar(0.80))):
-        speedCounter = 0
+    if reg.has(raceDayLabel):
+        reg.click(raceDayLabel)
+        race.runRace(True)
 
-    if objectiveRegion.has(notYetLabel) and not reg.has(raceKeyLabel) and reg.has(raceLabel):
+        try:
+            waitClick(nextLabel)
+            sleep(2)
+            waitClick(nextLabel)
+            return True
+        except FindFailed:
+            print("Final")
+            return True
+
+    isRaceDay = race.isRaceDay()
+
+    if (isRaceDay or objectiveRegion.has(notYetLabel)) and not reg.has(raceKeyLabel) and reg.has(raceLabel):
         reg.click(raceLabel)
         if reg.has("1615978551852.png", 5):
             reg.click("1615978573903.png")
             sleep(2)
             # returnせずに次の判定にうつる
         else:
-            race.runRace()
-            return False
+            result = race.runRace(False)
 
-    if reg.has(raceDayLabel):
-        reg.click(raceDayLabel)
-        race.runRace()
-        sleep(2)
-        if reg.has(nextLabel): 
-            waitClick(nextLabel)
-            sleep(2)
-            waitClick(nextLabel)
-        
-        
-        
-
-
+            if result:
+                return True
+            else:
+                # returnせず次の判定にうつる
+                sleep(2)
     
-    if reg.has(Pattern("1615929011233.png").similar(0.90)):
+    if reg.has(gageHalf):
         if reg.has(restLabel) :
             reg.click(restLabel)
             waitClick(okLabel)
@@ -117,11 +124,7 @@ def loop():
 
         reg.wait("1626318791352.png")
 
-        training.run([1,0.8,1,0.3,0.3])
-
-        
-
-        speedCounter = speedCounter - 1
+        training.run([1,0.6,1,0.3,0.4])
         
         return True
 

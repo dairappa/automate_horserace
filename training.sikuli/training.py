@@ -79,7 +79,23 @@ def run(trainingRate):
     
     click(clicks[training])
 
+speedRegion = Region(23,685,93,42)
+staminaRegion = Region(118,685,93,40)
+powerRegion = Region(211,683,96,43)
+gutsRegion = Region(302,681,94,44)
+smartRegion = Region(398,683,90,44)
 
+numberPlus = Pattern("numberPlus.png").similar(0.98)
+number0 = "number0.png"
+number1 = "number1.png"
+number2 = "number2.png"
+number3 = "number3.png"
+number4 = "number4.png"
+number5 = "number5.png"
+number6 = "number6.png"
+number7 = "number7.png"
+number8 = "number8.png"
+number9 = "number9.png"
 
 
 
