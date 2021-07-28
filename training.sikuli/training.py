@@ -86,16 +86,16 @@ gutsRegion = Region(302,681,94,44)
 smartRegion = Region(398,683,90,44)
 
 numberPlus = Pattern("numberPlus.png").similar(0.98)
-number0 = "number0.png"
-number1 = "number1.png"
-number2 = "number2.png"
-number3 = "number3.png"
-number4 = "number4.png"
-number5 = "number5.png"
-number6 = "number6.png"
-number7 = "number7.png"
-number8 = "number8.png"
-number9 = "number9.png"
+number0 = Pattern("number0.png").exact()
+number1 = Pattern("number1.png").exact()
+number2 = Pattern("number2.png").exact()
+number3 = Pattern("number3.png").exact()
+number4 = Pattern("number4.png").exact()
+number5 = Pattern("number5.png").exact()
+number6 = Pattern("number6.png").exact()
+number7 = Pattern("number7.png").exact()
+number8 = Pattern("number8.png").exact()
+number9 = Pattern("number9.png").exact()
 
 
 
