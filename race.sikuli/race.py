@@ -114,7 +114,7 @@ date4 = Pattern("date4.png").similar(0.90)
 date5 = Pattern("date5.png").similar(0.90)
 date6 = Pattern("date6.png").similar(0.95)
 date7 = Pattern("date7.png").similar(0.90)
-date8 = Pattern("date8.png").similar(0.90)
+date8 = Pattern("date8.png").similar(0.95)
 date9 = Pattern("date9.png").similar(0.90)
 date10 = Pattern("date10.png").similar(0.90)
 date11 = Pattern("date11.png").similar(0.90)
@@ -164,19 +164,24 @@ def checkDate():
     return {'cls': cls, 'month': month, 'week': week}
 
 raceDateArray = [
-    #{'cls': CLASS_JUNIOR, 'month': MONTH_12, 'week': WEEK_FORMER}, #阪神JF、朝日杯
+    {'cls': CLASS_JUNIOR, 'month': MONTH_12, 'week': WEEK_FORMER}, #阪神JF、朝日杯
     {'cls': CLASS_JUNIOR, 'month': MONTH_12, 'week': WEEK_LATER}, #ホープフル
-    {'cls': CLASS_CLASSIC, 'month': MONTH_04, 'week': WEEK_FORMER}, #皐月、桜花賞
+    #{'cls': CLASS_CLASSIC, 'month': MONTH_04, 'week': WEEK_FORMER}, #皐月、桜花賞
     #{'cls': CLASS_CLASSIC, 'month': MONTH_05, 'week': WEEK_FORMER}, #NHK
     {'cls': CLASS_CLASSIC, 'month': MONTH_05, 'week': WEEK_LATER}, #ダービー
+    #{'cls': CLASS_CLASSIC, 'month': MONTH_06, 'week': WEEK_FORMER}, #安田記念
+    #{'cls': CLASS_CLASSIC, 'month': MONTH_06, 'week': WEEK_LATER}, #宝塚記念
     {'cls': CLASS_CLASSIC, 'month': MONTH_11, 'week': WEEK_LATER}, #JC
-    {'cls': CLASS_CLASSIC, 'month': MONTH_11, 'week': WEEK_LATER}, #有馬
+    #{'cls': CLASS_CLASSIC, 'month': MONTH_11, 'week': WEEK_LATER}, #有馬
     {'cls': CLASS_SENIOR, 'month': MONTH_03, 'week': WEEK_LATER}, #大阪杯
     #{'cls': CLASS_SENIOR, 'month': MONTH_04, 'week': WEEK_LATER}, #天皇賞春
-    #{'cls': CLASS_SENIOR, 'month': MONTH_05, 'week': WEEK_FORMER}, #ヴィクトリアマイル
-    #{'cls': CLASS_SENIOR, 'month': MONTH_06, 'week': WEEK_FORMER}, #安田記念
+    {'cls': CLASS_SENIOR, 'month': MONTH_05, 'week': WEEK_FORMER}, #ヴィクトリアマイル
+    {'cls': CLASS_SENIOR, 'month': MONTH_06, 'week': WEEK_FORMER}, #安田記念
+    #{'cls': CLASS_SENIOR, 'month': MONTH_06, 'week': WEEK_LATER}, #宝塚記念
     #{'cls': CLASS_SENIOR, 'month': MONTH_10, 'week': WEEK_LATER}, #天皇賞秋
     {'cls': CLASS_SENIOR, 'month': MONTH_11, 'week': WEEK_LATER}, #JC
+    {'cls': CLASS_CLASSIC, 'month': MONTH_11, 'week': WEEK_LATER}, #有馬
+
 ]
 
 
