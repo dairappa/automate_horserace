@@ -52,10 +52,12 @@ def checkFriend():
     for icon in icons:
         iconFound = friendRegion.findAll(icon)
         count = 0
+        friendReadyCount = 0
         for iconItem in iconFound:
             count += 1
-            print(any([isFriendReady(iconItem.getY(), y) for y in friendReadyArr]))
-        iconCountArr.append(count)
+            if any([isFriendReady(iconItem.getY(), y) for y in friendReadyArr]):
+                friendReadyCount += 1
+        iconCountArr.append([count, friendReadyCount])
 
     return iconCountArr
 
@@ -84,6 +86,8 @@ def run(trainingRate):
     iconCountMatrix = []
     trainingValueMatrix = []
     trainingValueArr = []
+    trainingGainArray = [40, 30, 30, 15, 15]
+    friendGainArray = [8, 5, 5, 0, 0]
     
     for index, clickItem in enumerate(clicks):
         if checkTrainingType() != index:
@@ -92,11 +96,11 @@ def run(trainingRate):
         friendIcon = checkFriend()
         iconCountMatrix.append(friendIcon)
 
-        #trainingValue = calculateTrainingValue()
-        #trainingValueMatrix.append(trainingValue)
+        trainingValue = calculateTrainingValue()
+        trainingValueMatrix.append(trainingValue)
 
     
-    candidates = [sum(iconCountMatrix[i]) * trainingRate[i] for i in range(5)]
+    candidates = [calculateCandidate(trainingRate[i], iconCountMatrix[i], trainingValueMatrix[i], trainingGaneArray[i], friendGainArray) for i in range(5)]
 
                            
     training = candidates.index(max(candidates))
@@ -106,6 +110,12 @@ def run(trainingRate):
         sleep(1)
     
     click(clicks[training])
+
+def calculateCandidate(trainingRate, iconCountArray, trainingValue, trainingGain, friendGainArray):
+    def training = trainingValue + trainingGain
+
+
+    return sum(icon[0] for icon in iconCountArray) * trainingRate
 
 speedRegion = Region(23,685,93,42)
 staminaRegion = Region(118,685,93,40)

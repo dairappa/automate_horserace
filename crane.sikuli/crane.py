@@ -9,6 +9,6 @@ reg.drag(craneButton)
 
 #sleep(1.2) normal
 #sleep(0.4) fast
-sleep(0.1) super fast
+sleep(0.1) #super fast
 
 reg.dropAt(craneButton)
